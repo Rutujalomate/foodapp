@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="styles.css">
+
+
+    </head>
+    <style>
+        body{
+             background-color: black; 
+             background:url("https://img.freepik.com/free-photo/vegetables-set-left-black-slate_1220-685.jpg?w=2000") ;
+        }
+        form{
+             background: black; 
+            margin: auto;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+            width: 400px;
+            align-content: center;
+            justify-content: space-around;
+            gap: 10px;
+            margin-top: 5%;
+            height: 400px;
+            border-radius: 10px;
+        }
+        input,button{
+            height: 40px;
+            width: 300px;
+            border-radius: 12px;
+        }
+        #name ,#email, #password,button{
+            font-size: 15px;
+            font-weight: bold;
+            
+        }
+        
+    </style>
+    <body>
+        <div id="header"></div>
+        <form >
+            <h2 style="color: yellow;">signup form</h2>
+            <input type="text" id="name" placeholder="enter your name">
+            <input type="text" id="email" placeholder="enter your mail">
+            <input type="text" id="password" placeholder="enter your password">
+            <button id="btn">signup</button>
+        </form>
+    </body>
+</html>
+<script type="module">
+     import navbar from './components/navbar.js';
+let header = document.getElementById('header');
+ header.innerHTML = navbar();
+
+console.log("ss")
+    var arr=JSON.parse(localStorage.getItem("user")) || []
+    console.log(arr)
+
+   function Pass(name,email,password){
+        this.name=name;
+        this.email=email;
+        this.password=password
+    }
+
+    let cart=JSON.parse(localStorage.getItem("cart")) ||[]
+        document.querySelector("sup").innerHTML=cart.length
+
+    
+
+    document.getElementById("btn").addEventListener("click",function(e){
+             event.preventDefault()
+
+
+        let name=document.getElementById("name").value;
+    let email=document.getElementById("email").value;
+    let password=document.getElementById("password").value;
+
+    // if(name.length>0 && email.length>0 && password>0){
+    var p=new Pass(name,email,password)
+
+    console.log(p.name)
+    //var arr=JSON.parse(localStorage.getItem("user")) || []
+    // var arr=[]
+    if(p.name==""||p.email==""||p.password==""){
+        alert("please enter all feilds")
+    }
+    else{
+    arr.push(p)
+    }
+console.log(arr)
+
+
+localStorage.setItem("user",JSON.stringify(arr))
+
+    })
+     //event.preventDefault()
+
+    
+
+    // }
+    // else{
+        // alert("please fill all Feild")
+    // }
+
+
+
+
+
+
+</script>
